@@ -37,6 +37,19 @@
 	<instantiate from="src/app_package/kotlin/PreferencesManager.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/preferences/PreferencesManager.kt" />
 
+	<instantiate from="src/app_package/kotlin/BaseActivity.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseActivity.kt" />
+	<instantiate from="src/app_package/kotlin/BaseView.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseView.kt" />
+	<instantiate from="src/app_package/kotlin/BasePresenter.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BasePresenter.kt" />
+
+	<instantiate from="src/app_package/kotlin/BaseFragment.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseFragment.kt" />
+
+	<instantiate from="src/app_package/kotlin/Presenter.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.kt" />
+
  <dependency mavenUrl="org.jetbrains.kotlin:kotlin-stdlib:1.1.1"/>
  <dependency mavenUrl="org.jetbrains.anko:anko-sdk15:0.9.1"/>
 
@@ -78,6 +91,19 @@
 	<instantiate from="src/app_package/PreferencesManager.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/preferences/PreferencesManager.java" />
 
+	<instantiate from="src/app_package/BaseActivity.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseActivity.java" />
+	<instantiate from="src/app_package/BaseView.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseView.java" />
+	<instantiate from="src/app_package/BasePresenter.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BasePresenter.java" />
+
+	<instantiate from="src/app_package/BaseFragment.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/BaseFragment.java" />
+
+	<instantiate from="src/app_package/Presenter.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.java" />
+
 
 <dependency mavenUrl="com.jakewharton:butterknife:8.5.1"/>
 <dependency mavenUrl="com.jakewharton:butterknife-compiler:8.5.1" gradleConfiguration="annotationProcessor"/>
@@ -104,5 +130,8 @@
 	
 	<merge from="/build.project.gradle.ftl"
 	to="${escapeXmlAttribute(topOut)}/build.gradle"/>
+
+	<merge from="/strings.xml.ftl"
+             to="${escapeXmlAttribute(resOut)}/values/strings.xml" />
 
 </recipe>
