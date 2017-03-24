@@ -110,9 +110,11 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
   ```
 
 # Usage
-You need to copy this folder into the following path:
+You need to copy "Project Template" folder into the following path:
 
+```
 /ANDROID_STUDIO_HOME/plugins/android/lib/templates/other/
+```
 
 Then it's necessary to restart Android Studio. After that, right-click on app folder and go to:
 new -> other -> Project Template
