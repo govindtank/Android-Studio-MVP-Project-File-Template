@@ -4,6 +4,9 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
 # Template files
 - Application 
   - Generates application class with dagger main component initialization.
+  
+  * You may use this template combined with [MVP Template](https://github.com/lucasmodesto/Android-Studio-MVP-File-Template) for generating MVP classes.
+
 
 - Modules
   - ApplicationModule - Provides application instance / context
