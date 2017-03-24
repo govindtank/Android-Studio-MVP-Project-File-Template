@@ -19,6 +19,13 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
  - Scope
    - PerActivity - Scope that rely on activity's life cycle
    
+ - MVP Core
+   - BaseActivity - Default BaseActivity
+   - BaseFragment - Default BaseFragment
+   - BaseView - Interface that contains default functions for View classes.
+   - BasePresenter - Interface that contains default functions for Presenter classes.
+   - Presenter - Class that implements view attach/detach and RxJava subscriptions functions 
+   
 # Merged files
 - build.gradle (Project)
  * Java
@@ -108,7 +115,6 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
   compile 'com.squareup.okio:okio:1.11.0'
   
   ```
-
 # Usage
 You need to copy "Project Template" folder into the following path:
 
