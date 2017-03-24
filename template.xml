@@ -1,0 +1,26 @@
+<template format="4"
+		revision="1"
+		name="Project Template"
+		description="Generates structure for Dagger 2, Retrofit, Rx and MVP Pattern">
+ 
+	<category value="Other"/>
+
+<parameter id="appName"
+		name="Application Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default="MyApp"
+		help="Used to define name of classes and vars."/>
+
+<parameter
+        id="generateKotlin"
+        name="Generate files in Kotlin"
+        type="boolean"
+        default="false"
+        help="Generates .kt classes" />
+
+ 
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+ 
+</template>
