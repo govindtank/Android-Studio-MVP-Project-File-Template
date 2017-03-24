@@ -17,7 +17,7 @@ public class PreferencesManager {
         this.prefs = prefs;
     }
 
-    private void saveOrUpdate(String key, Object data) {
+    public void saveOrUpdate(String key, Object data) {
 
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -47,7 +47,7 @@ public class PreferencesManager {
         }
     }
 
-    private Object get(String key, int type) {
+    public Object get(String key, int type) {
 
         switch (type) {
 
@@ -66,27 +66,27 @@ public class PreferencesManager {
         throw new RuntimeException("Type not supported");
     }
 
-    private boolean getBoolean(String key) {
+    public boolean getBoolean(String key) {
         return prefs.getBoolean(key, false);
     }
 
-    private String getString(String key) {
+    public String getString(String key) {
         return prefs.getString(key, null);
     }
 
-    private int getInt(String key) {
+    public int getInt(String key) {
         return prefs.getInt(key, -1);
     }
 
-    private float getFloat(String key) {
+    public float getFloat(String key) {
         return prefs.getFloat(key, -1.0f);
     }
 
-    private long getLong(String key) {
+    public long getLong(String key) {
         return prefs.getLong(key, -1L);
     }
 
-    private void delete(String key) {
+    public void delete(String key) {
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove(key);
         editor.apply();
