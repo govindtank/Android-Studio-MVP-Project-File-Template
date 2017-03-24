@@ -2,7 +2,6 @@ package ${packageName}.di.module;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import dagger.Module;
 import ${packageName}.app.${appName}App;
 import dagger.Provides;
