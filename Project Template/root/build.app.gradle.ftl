@@ -25,10 +25,6 @@ apply plugin: 'com.jakewharton.butterknife'
 
 <#if generateKotlin>
 
-kapt {
-    generateStubs = true
-}
-
 sourceSets {
 main.java.srcDirs += 'src/main/kotlin'
 }
