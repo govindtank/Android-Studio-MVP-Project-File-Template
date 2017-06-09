@@ -4,6 +4,7 @@ interface BaseView {
 
   fun showProgress()
   fun hideProgress()
-  fun showMessage(message: String)
+  fun showMessage(message: Any)
+
 }
 

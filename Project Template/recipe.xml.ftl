@@ -50,8 +50,12 @@
 	<instantiate from="src/app_package/kotlin/Presenter.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.kt" />
 
- <dependency mavenUrl="org.jetbrains.kotlin:kotlin-stdlib:1.1.1"/>
- <dependency mavenUrl="org.jetbrains.anko:anko-sdk15:0.9.1"/>
+
+
+
+<dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:2.0.2"/>
+<dependency mavenUrl="org.jetbrains.kotlin:kotlin-stdlib:1.1.2-3"/>
+<dependency mavenUrl="org.jetbrains.anko:anko-sdk15:0.9.1"/>
 
 	</#if>	
 
@@ -105,25 +109,27 @@
                    to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.java" />
 
 
-<dependency mavenUrl="com.jakewharton:butterknife:8.5.1"/>
-<dependency mavenUrl="com.jakewharton:butterknife-compiler:8.5.1" gradleConfiguration="annotationProcessor"/>
+<dependency mavenUrl="com.jakewharton:butterknife:8.6.0"/>
+<dependency mavenUrl="com.jakewharton:butterknife-compiler:8.6.0" gradleConfiguration="annotationProcessor"/>
 
 </#if>
 
- <dependency mavenUrl="com.google.dagger:dagger:2.10"/>
- <dependency mavenUrl="com.google.dagger:dagger-compiler:2.10" gradleConfiguration="annotationProcessor" />
- <dependency mavenUrl="org.glassfish:javax.annotation:10.0-b28" gradleConfiguration="provided" />
+<dependency mavenUrl="com.google.dagger:dagger:2.10"/>
+<dependency mavenUrl="com.google.dagger:dagger-compiler:2.10" gradleConfiguration="annotationProcessor" />
 
 
-<dependency mavenUrl="io.reactivex:rxandroid:1.2.1"/>
-<dependency mavenUrl="io.reactivex:rxjava:1.2.5"/>
 
-<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.1.0"/>
-<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.1.0"/>
-<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.1.0"/>
-<dependency mavenUrl="com.squareup.okhttp3:okhttp:3.6.0"/>
-<dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.6.0"/>
-<dependency mavenUrl="com.squareup.okio:okio:1.11.0"/>
+
+<dependency mavenUrl="io.reactivex.rxjava2:rxandroid:2.0.1"/>
+<dependency mavenUrl="io.reactivex.rxjava2:rxjava:2.1.0"/>
+
+
+<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.2.0"/>
+<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.2.0"/>
+<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.2.0"/>
+<dependency mavenUrl="com.squareup.okhttp3:okhttp:3.7.0"/>
+<dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.7.0"/>
+<dependency mavenUrl="com.squareup.okio:okio:1.12.0"/>
 
 	<merge from="/build.app.gradle.ftl"
 		to="${escapeXmlAttribute(topOut)}/${projectName}/build.gradle"/>

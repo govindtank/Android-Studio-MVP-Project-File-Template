@@ -1,35 +1,24 @@
 package ${packageName}.ui.core
 
-import rx.subscriptions.CompositeSubscription
-import rx.Subscription
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 open class Presenter<T : BaseView> : BasePresenter<T> {
 
-  private var _view: T? = null
-  private var compositeSubscription: CompositeSubscription? = null
+protected var view: T? = null
+protected var compositeDisposable: CompositeDisposable? = null
 
-  protected val view: T?
-    get() {
-      return _view
+    override fun attach(view: T) {
+        this.view = view
+        compositeDisposable = CompositeDisposable()
     }
 
-  protected val subscriptions: CompositeSubscription?
-    get() {
-      return compositeSubscription
+    override fun detach() {
+        this.view = null
+        compositeDisposable?.dispose()
     }
 
-  override fun attach(view: T) {
-    _view = view
-    compositeSubscription = CompositeSubscription()
-  }
-
-  override fun detach() {
-    _view = null
-    compositeSubscription?.clear()
-  }
-
-  protected fun addSubscription(subscription: Subscription) {
-    subscriptions?.add(subscription)
-  }
-
+    protected fun addDisposable(disposable: Disposable) {
+        compositeDisposable?.add(disposable)
+    }
 }

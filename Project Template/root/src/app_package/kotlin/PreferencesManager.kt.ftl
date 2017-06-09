@@ -5,12 +5,12 @@ import javax.inject.Inject
 
 open class PreferencesManager @Inject constructor(val prefs: SharedPreferences) {
 
-  companion object {
-    val BOOLEAN = 1
-    val STRING = 2
-    val INTEGER = 3
-    val FLOAT = 4
-    val LONG = 5
+    companion object {
+    const val BOOLEAN = 1
+    const val STRING = 2
+    const val INTEGER = 3
+    const val FLOAT = 4
+    const val LONG = 5
   }
 
   fun saveOrUpdate(key: String, data: Any) {
@@ -46,7 +46,7 @@ open class PreferencesManager @Inject constructor(val prefs: SharedPreferences) 
     }
   }
 
-  fun get(key: String, type: Int): Any {
+  fun get(key: String, type: Int): Any? {
 
     when (type) {
 

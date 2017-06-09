@@ -1,14 +1,13 @@
 buildscript {
+  ext.KOTLIN_VERSION = '1.1.2-3'
+  ext.ANKO_VERSION = '0.9.1'
+
   repositories {
     jcenter()
 }
 dependencies {
-<#if !generateKotlin>
-classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
-classpath 'me.tatarka:gradle-retrolambda:3.6.0'
-</#if>
 <#if generateKotlin>
-classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.1'
+classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
 </#if>
 }
 }

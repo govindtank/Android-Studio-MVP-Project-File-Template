@@ -8,7 +8,7 @@ import ${packageName}.di.module.ApplicationModule
 class ${appName}App : Application() {
 
   companion object {
-    @JvmStatic lateinit var graph: MainComponent
+    @JvmStatic lateinit var mainComponent: MainComponent
   }
 
   override fun onCreate() {
@@ -17,7 +17,7 @@ class ${appName}App : Application() {
   }
 
   private fun initDagger() {
-    graph = DaggerMainComponent
+    mainComponent = DaggerMainComponent
         .builder()
         .applicationModule(ApplicationModule(this))
         .build()

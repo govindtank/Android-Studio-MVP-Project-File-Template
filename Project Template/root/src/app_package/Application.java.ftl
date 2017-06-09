@@ -7,10 +7,10 @@ import ${packageName}.di.module.ApplicationModule;
 
 public class ${appName}App extends Application {
 
-    private static MainComponent graph;
+    private static MainComponent mainComponent;
 
-    public static MainComponent getGraph() {
-        return graph;
+    public static MainComponent getMainComponent() {
+        return mainComponent;
     }
 
     @Override public void onCreate() {
@@ -19,8 +19,10 @@ public class ${appName}App extends Application {
     }
 
     private void initDagger() {
-        graph =
-            DaggerMainComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        mainComponent =  DaggerMainComponent
+			.builder()
+			.applicationModule(new ApplicationModule(this))
+			.build();
     }
 }
 

@@ -1,25 +1,25 @@
 package ${packageName}.ui.core;
 
-import rx.subscriptions.CompositeSubscription;
-import rx.Subscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 public class Presenter<T extends BaseView> implements BasePresenter<T> {
 
     protected T view;
-    protected CompositeSubscription subscriptions;
+    protected CompositeDisposable compositeDisposable;
 
     @Override public void attach(T view) {
         this.view = view;
-        subscriptions = new CompositeSubscription();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override public void detach() {
         this.view = null;
-        if (subscriptions != null) subscriptions.clear();
+        if (compositeDisposable != null) compositeDisposable.dispose();
     }
 
-    protected void addSubscription(Subscription subscription) {
-        if (subscriptions != null) subscriptions.add(subscription);
+    protected void addDisposable(Disposable disposable){
+        if (compositeDisposable != null) compositeDisposable.add(disposable);
     }
 }
 
