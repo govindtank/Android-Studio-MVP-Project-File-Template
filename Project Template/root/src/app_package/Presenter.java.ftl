@@ -3,7 +3,7 @@ package ${packageName}.ui.core;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public class Presenter<T extends BaseView> implements BasePresenter<T> {
+public class MvpPresenter<T extends BaseView> implements BasePresenter<T> {
 
     protected T view;
     protected CompositeDisposable compositeDisposable;

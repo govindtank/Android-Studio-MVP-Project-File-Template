@@ -48,7 +48,7 @@
                    to="${escapeXmlAttribute(srcOut)}/ui/core/BaseFragment.kt" />
 
 	<instantiate from="src/app_package/kotlin/Presenter.kt.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.kt" />
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/MvpPresenter.kt" />
 
 
 
@@ -106,7 +106,7 @@
                    to="${escapeXmlAttribute(srcOut)}/ui/core/BaseFragment.java" />
 
 	<instantiate from="src/app_package/Presenter.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/ui/core/Presenter.java" />
+                   to="${escapeXmlAttribute(srcOut)}/ui/core/MvpPresenter.java" />
 
 
 <dependency mavenUrl="com.jakewharton:butterknife:8.6.0"/>
