@@ -131,13 +131,13 @@
 <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.7.0"/>
 <dependency mavenUrl="com.squareup.okio:okio:1.12.0"/>
 
-	<merge from="/build.app.gradle.ftl"
+	<merge from="build.app.gradle.ftl"
 		to="${escapeXmlAttribute(topOut)}/${projectName}/build.gradle"/>
 	
-	<merge from="/build.project.gradle.ftl"
+	<merge from="build.project.gradle.ftl"
 	to="${escapeXmlAttribute(topOut)}/build.gradle"/>
 
-	<merge from="/strings.xml.ftl"
+	<merge from="strings.xml.ftl"
              to="${escapeXmlAttribute(resOut)}/values/strings.xml" />
 
 </recipe>
