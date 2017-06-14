@@ -1,5 +1,5 @@
-# Android-Studio-Dagger-2-File-Template
-File template to generate default project structure with Dagger 2, Retrofit, Rx and MVP Pattern.
+# Android-Studio-MVP-Project-File-Template
+File template to generate default project structure with MVP Pattern and RxJava.
 
 * You may use this template combined with [MVP Template](https://github.com/lucasmodesto/Android-Studio-MVP-File-Template) for generating MVP classes.
 
@@ -32,12 +32,11 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
 - build.gradle (Project)
  * Java
 ```
-    classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
-    classpath 'me.tatarka:gradle-retrolambda:3.6.0'
+    classpath 'com.jakewharton:butterknife-gradle-plugin:8.6.0'
    ```
   * Kotlin
 ```    
-    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.1'
+    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2-5'
 ```
   
  - build.gradle (App)
@@ -53,28 +52,27 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
     debug {
       buildConfigField "String", "REST_API_URL","\"https://api.com\""
     }
-    
-    compileOptions {
-    sourceCompatibility 1.8
-    targetCompatibility 1.8
-  }
   
+  // Dependency injection
   compile 'com.google.dagger:dagger:2.10'
   annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
-  provided 'org.glassfish:javax.annotation:10.0-b28'
    
-  compile 'io.reactivex:rxandroid:1.2.1'
-  compile 'io.reactivex:rxjava:1.2.5'
+  // RxJava
+  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+  compile 'io.reactivex.rxjava2:rxkotlin:2.0.2'
+
+  compile 'com.jakewharton:butterknife:8.6.0'
+  annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
    
-  compile 'com.jakewharton:butterknife:8.5.1'
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-   
-  compile 'com.squareup.retrofit2:retrofit:2.1.0'
-  compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-  compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-  compile 'com.squareup.okhttp3:okhttp:3.6.0'
-  compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-  compile 'com.squareup.okio:okio:1.11.0'
+  compile 'com.squareup.retrofit2:retrofit:2.2.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+  compile 'com.squareup.okhttp3:okhttp:3.7.0'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+  compile 'com.squareup.okio:okio:1.12.0'
+
+  compile 'com.jakewharton.timber:timber:4.5.1'
   
 ```
   * Kotlin
@@ -98,23 +96,30 @@ File template to generate default project structure with Dagger 2, Retrofit, Rx 
   sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
   }
+   
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
+  compile "org.jetbrains.anko:anko-sdk15:$ANKO_VERSION"
   
-  compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.1'
-  compile 'org.jetbrains.anko:anko-sdk15:0.9.1'
-  
+  // Dependency injection
+  compile "com.github.salomonbrys.kodein:kodein:$KODEIN_VERSION"
+  compile "com.github.salomonbrys.kodein:kodein-android:$KODEIN_VERSION"
+  // or     
   compile 'com.google.dagger:dagger:2.10'
   kapt 'com.google.dagger:dagger-compiler:2.10'
-  provided 'org.glassfish:javax.annotation:10.0-b28'
    
-  compile 'io.reactivex:rxandroid:1.2.1'
-  compile 'io.reactivex:rxjava:1.2.5'
-  
-  compile 'com.squareup.retrofit2:retrofit:2.1.0'
-  compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-  compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-  compile 'com.squareup.okhttp3:okhttp:3.6.0'
-  compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-  compile 'com.squareup.okio:okio:1.11.0'
+  // RxJava
+  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+  compile 'io.reactivex.rxjava2:rxkotlin:2.0.2'
+   
+  compile 'com.squareup.retrofit2:retrofit:2.2.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+  compile 'com.squareup.okhttp3:okhttp:3.7.0'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+  compile 'com.squareup.okio:okio:1.12.0'
+
+  compile 'com.jakewharton.timber:timber:4.5.1'
   
   ```
 # Usage
@@ -126,8 +131,6 @@ You need to copy "Project Template" folder into the following path:
 
 Then it's necessary to restart Android Studio. After that, right-click on app folder and go to:
 new -> other -> Project Template
-
-Optionally it's possibly to generate the classes in Kotlin language by checking "Generate files in kotlin".
 
 *** Known issue ***
 When merging build.gradle files for add dependencies, you need to fix some generated lines mannualy.

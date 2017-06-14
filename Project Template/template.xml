@@ -1,7 +1,7 @@
 <template format="4"
 		revision="1"
 		name="Project Template"
-		description="Generates structure for Dagger 2, Retrofit, Rx and MVP Pattern">
+		description="Generates default project structure for MVP Pattern with RxJava2">
  
 	<category value="Other"/>
 
@@ -13,11 +13,25 @@
 		help="Used to define name of classes and vars."/>
 
 <parameter
-        id="generateKotlin"
-        name="Generate files in Kotlin"
-        type="boolean"
-        default="false"
-        help="Generates .kt classes" />
+        id="language"
+        name="Language"
+        type="enum"
+        default="kotlin"
+        help="Choose which language will be used for generated classes">
+        <option id="kotlin">Kotlin</option>
+        <option id="java">Java</option>
+</parameter>
+
+<parameter
+        id="di"
+        name="Dependency injection framework"
+        type="enum"
+        default="dagger"
+        visibility="language == 'kotlin'"
+        help="Choose which DI framework will be used">
+        <option id="dagger">Dagger</option>
+        <option id="kodein">Kodein</option>
+</parameter>
 
  
     <globals file="globals.xml.ftl" />

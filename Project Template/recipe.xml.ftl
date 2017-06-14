@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <recipe>
 
-	<#if generateKotlin>
+	<#if language == "kotlin">
 
+<#if di == "dagger">
 	<instantiate from="src/app_package/kotlin/MainComponent.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/component/MainComponent.kt" />
 
@@ -18,21 +19,35 @@
 	<instantiate from="src/app_package/kotlin/ServiceModule.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/module/ServiceModule.kt" />
 
-	<instantiate from="src/app_package/kotlin/Service.kt.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/data/network/${appName}Service.kt" />
-
-	<instantiate from="src/app_package/kotlin/Application.kt.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/app/${appName}App.kt" />
-
 	<instantiate from="src/app_package/PerActivity.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/scope/PerActivity.java" />
 
 	<instantiate from="src/app_package/kotlin/PreferencesModule.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/module/PreferencesModule.kt" />
 
-
 	<instantiate from="src/app_package/kotlin/PresenterModule.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/module/PresenterModule.kt" />
+
+</#if>
+
+<#if di == "kodein">
+
+<instantiate from="src/app_package/kotlin/KodeInPreferencesModule.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/di/module/PreferencesModule.kt" />
+
+	<instantiate from="src/app_package/kotlin/KodeInNetworkModule.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/di/module/NetworkModule.kt" />
+
+	<instantiate from="src/app_package/kotlin/KodeInConfig.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/di/KodeinConfig.kt" />
+
+</#if>
+
+	<instantiate from="src/app_package/kotlin/Service.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/data/network/${appName}Service.kt" />
+
+	<instantiate from="src/app_package/kotlin/Application.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/app/${appName}App.kt" />
 
 	<instantiate from="src/app_package/kotlin/PreferencesManager.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/preferences/PreferencesManager.kt" />
@@ -51,15 +66,13 @@
                    to="${escapeXmlAttribute(srcOut)}/ui/core/MvpPresenter.kt" />
 
 
-
-
 <dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:2.0.2"/>
 <dependency mavenUrl="org.jetbrains.kotlin:kotlin-stdlib:1.1.2-3"/>
 <dependency mavenUrl="org.jetbrains.anko:anko-sdk15:0.9.1"/>
 
 	</#if>	
 
-	<#if !generateKotlin>
+	<#if language == "java">
  
 	<instantiate from="src/app_package/MainComponent.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/component/MainComponent.java" />
@@ -76,6 +89,13 @@
 	<instantiate from="src/app_package/ServiceModule.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/module/ServiceModule.java" />
 
+	<instantiate from="src/app_package/PreferencesModule.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/di/module/PreferencesModule.java" />
+
+
+	<instantiate from="src/app_package/PresenterModule.java.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/di/module/PresenterModule.java" />
+
 	<instantiate from="src/app_package/Service.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/network/${appName}Service.java" />
 
@@ -84,13 +104,6 @@
 
 	<instantiate from="src/app_package/PerActivity.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/scope/PerActivity.java" />
-
-	<instantiate from="src/app_package/PreferencesModule.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/di/module/PreferencesModule.java" />
-
-
-	<instantiate from="src/app_package/PresenterModule.java.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/di/module/PresenterModule.java" />
 
 	<instantiate from="src/app_package/PreferencesManager.java.ftl"
                    to="${escapeXmlAttribute(srcOut)}/data/preferences/PreferencesManager.java" />
@@ -114,15 +127,18 @@
 
 </#if>
 
+<#if di =="dagger">
 <dependency mavenUrl="com.google.dagger:dagger:2.10"/>
-<dependency mavenUrl="com.google.dagger:dagger-compiler:2.10" gradleConfiguration="annotationProcessor" />
+<dependency mavenUrl="com.google.dagger:dagger-compiler:2.10" gradleConfiguration="kapt" />
+</#if>
 
-
-
+<#if di == "kodein" && language == "kotlin">
+<dependency mavenUrl="com.github.salomonbrys.kodein:kodein:4.0.0"/>
+<dependency mavenUrl="com.github.salomonbrys.kodein:kodein-android:4.0.0"/>
+</#if>
 
 <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:2.0.1"/>
 <dependency mavenUrl="io.reactivex.rxjava2:rxjava:2.1.0"/>
-
 
 <dependency mavenUrl="com.squareup.retrofit2:retrofit:2.2.0"/>
 <dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.2.0"/>
@@ -130,6 +146,9 @@
 <dependency mavenUrl="com.squareup.okhttp3:okhttp:3.7.0"/>
 <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.7.0"/>
 <dependency mavenUrl="com.squareup.okio:okio:1.12.0"/>
+
+<dependency mavenUrl="com.jakewharton.timber:timber:4.5.1"/>
+<dependency mavenUrl="com.android.support:design:25.3.1"/>
 
 	<merge from="build.app.gradle.ftl"
 		to="${escapeXmlAttribute(topOut)}/${projectName}/build.gradle"/>

@@ -1,9 +1,11 @@
 package ${packageName}.data.preferences
 
 import android.content.SharedPreferences
+<#if di == "dagger">
 import javax.inject.Inject
+</#if>
 
-open class PreferencesManager @Inject constructor(val prefs: SharedPreferences) {
+open class PreferencesManager <#if di == "dagger">@Inject</#if> constructor(val prefs: SharedPreferences) {
 
     companion object {
     const val BOOLEAN = 1

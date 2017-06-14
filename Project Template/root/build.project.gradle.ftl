@@ -6,7 +6,7 @@ buildscript {
     jcenter()
 }
 dependencies {
-<#if generateKotlin>
+<#if language == "kotlin">
 classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
 </#if>
 }

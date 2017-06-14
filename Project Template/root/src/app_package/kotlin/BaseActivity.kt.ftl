@@ -7,29 +7,47 @@ import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
-import android.widget.Toast
+import org.jetbrains.anko.toast
 import ${packageName}.R
-import ${packageName}.app.${appName}App
+<#if di == "dagger">
 import ${packageName}.di.component.UiComponent
+import ${packageName}.app.${appName}App
+</#if>
+<#if di == "kodein">
+import com.github.salomonbrys.kodein.KodeinInjected
+import com.github.salomonbrys.kodein.KodeinInjector
+import com.github.salomonbrys.kodein.android.appKodein
+</#if>
 
-open class BaseActivity : AppCompatActivity(), BaseView {
+open class BaseActivity : AppCompatActivity(), BaseView <#if di == "kodein">, KodeinInjected </#if> {
 
+    <#if di == "kodein">
+    override val injector = KodeinInjector()
+    </#if>
+    <#if di == "dagger">
     protected lateinit var uiComponent: UiComponent
+    </#if>
     protected var progress: ProgressDialog? = null
-
     private var drawerLayout: DrawerLayout? = null
     private var drawerToggle: ActionBarDrawerToggle? = null
     private var navigationView: NavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        <#if di == "kodein">
+        inject(appKodein())
+        </#if>
+        <#if di == "dagger">
         initUiComponent()
+        </#if>
         setupProgressDialog()
     }
+    <#if di == "dagger">
 
     private fun initUiComponent() {
         uiComponent = ${appName}App.mainComponent.uiComponent()
     }
+    </#if>
 
     protected fun setupToolbar() {
         val toolbar = findViewById(R.id.toolbar) as Toolbar
@@ -88,8 +106,8 @@ open class BaseActivity : AppCompatActivity(), BaseView {
 
     private fun setupProgressDialog() {
         progress = ProgressDialog(this)
-        progress!!.setMessage(getString(R.string.loading_message))
-        progress!!.setCancelable(false)
+        progress?.setMessage(getString(R.string.loading_message))
+        progress?.setCancelable(false)
     }
 
     override fun showProgress() {
