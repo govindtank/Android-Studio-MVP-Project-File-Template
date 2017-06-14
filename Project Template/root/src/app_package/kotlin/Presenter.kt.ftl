@@ -3,7 +3,7 @@ package ${packageName}.ui.core
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-open class Presenter<T : BaseView> : BasePresenter<T> {
+open class MvpPresenter<T : BaseView> : BasePresenter<T> {
 
 protected var view: T? = null
 protected var compositeDisposable: CompositeDisposable? = null
